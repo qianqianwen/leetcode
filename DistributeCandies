@@ -1,0 +1,16 @@
+    public int distributeCandies(int[] candies) {
+        HashMap<Integer,Integer> map1 = new HashMap<Integer, Integer>();
+        for(int i=0;i<candies.length;i++) {
+            if(map1.get(candies[i])!=null) {
+                map1.put(candies[i],map1.get(candies[i])+1);
+            }
+            else {
+                map1.put(candies[i],1);
+            }
+        }
+        int result=0;
+        if(map1.size()<candies.length/2) result=map1.size();
+        else result=candies.length/2;
+        System.out.println(result);
+        return result;
+    }
