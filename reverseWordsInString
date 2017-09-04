@@ -1,0 +1,36 @@
+    public String reverseWords(String s) {
+        if(s==null||s.length()==0) {
+            return s;
+        }
+        String[] strs=s.split(" ");
+        if(strs.length ==0) {
+            return s;
+        }
+
+        StringBuffer sb=new StringBuffer();
+
+        for(int i=0;i<strs.length;i++) {
+//            System.out.println("str is "+strs[i]);
+            StringBuffer sb1=reverse(strs[i].toCharArray(),0,strs[i].length()-1);
+            sb=sb.append(sb1+" ");
+        }
+
+        System.out.println(sb.toString());
+        return sb.toString().trim();
+    }
+
+    public StringBuffer reverse(char[] a, int i, int j) {
+        char tmp;
+        StringBuffer sb=new StringBuffer();
+
+        for(;i<j;i++,j--) {
+            tmp = a[j];
+            a[j] = a[i];
+            a[i] = tmp;
+        }
+        for (int k=0;k<a.length;k++) {
+//            System.out.println("a tmp "+a[k]);
+            sb.append(a[k]);
+        }
+        return sb;
+    }
