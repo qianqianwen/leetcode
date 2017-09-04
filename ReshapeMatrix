@@ -8,7 +8,7 @@
             for (int j=0;j<nums[0].length;j++) {
                 res[row][col] = nums[i][j];
                 col++;
-                if(row==c) {
+                if(col==c) {
                     row++;
                     col=0;
                 }
