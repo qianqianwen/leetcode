@@ -1,0 +1,32 @@
+    public List<Double> averageOfLevels(TreeNode root) {
+        int levelnum=0;
+        Double tmp=0.0;
+        List<Double> result=new ArrayList<Double>();
+        Queue<TreeNode> treeQueue = new LinkedList<TreeNode>();
+        treeQueue.add(root);
+        while(!treeQueue.isEmpty()) {
+            tmp=0.0;
+            levelnum=treeQueue.size();
+            List<Integer> levelList = new ArrayList<Integer>();
+            while(levelnum>0) {
+                TreeNode tmpNode = treeQueue.poll();
+                if(tmpNode!=null) {
+                    levelList.add(tmpNode.val);
+                    treeQueue.add(tmpNode.left);
+                    treeQueue.add(tmpNode.right);
+                }
+                levelnum--;
+            }
+            for(int i=0;i<levelList.size();i++) {
+                tmp+=levelList.get(i);
+                System.out.println("levelist is "+levelList.get(i));
+            }
+
+            if(levelList.size()!=0) {
+                System.out.println("result is "+tmp/levelList.size());
+                result.add(tmp/levelList.size());
+            }
+
+        }
+        return result;
+    }
