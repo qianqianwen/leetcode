@@ -1,0 +1,32 @@
+    public List<Integer> topKFrequent(int[] nums, int k) {
+        HashMap<Integer,Integer> nums_map = new HashMap();
+
+        List<Integer> result = new ArrayList<Integer>();
+        
+        for (int n:nums) {
+            nums_map.put(n,nums_map.getOrDefault(n,0)+1);
+        }
+        
+        List<Integer>[] bucket = new List[nums.length+1];
+        for (int n:nums_map.keySet()) {
+            int freq=nums_map.get(n);
+            if (bucket[freq]==null) {
+                bucket[freq]=new LinkedList<>();
+            }
+            bucket[freq].add(n);
+        }
+        
+        System.out.println("bucket length " + bucket.length);
+        
+        for(int i=bucket.length-1; i>=0 && k>0; --i){
+            System.out.println("i "+i);
+            System.out.println("bucket "+bucket[i]);
+            if(bucket[i]!=null){
+                List<Integer> list = bucket[i]; 
+                result.addAll(list);
+                k-= list.size();
+                System.out.println("k is "+k);
+            }
+        }
+        return result;
+    }
